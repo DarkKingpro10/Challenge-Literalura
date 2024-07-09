@@ -1,4 +1,4 @@
-package com.base_data_jpa.web.app;
+package com.je.literalura;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,26 +8,32 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import api.API;
-import dto.AutorDTO;
-import models.Autor;
-import models.Language;
-import models.Libro;
-import models.LibrosData;
-import repositories.AutorRepository;
-import repositories.LibroRepository;
-import services.Converter;
+import com.je.literalura.api.API;
+import com.je.literalura.dto.AutorDTO;
+import com.je.literalura.models.Autor;
+import com.je.literalura.models.Language;
+import com.je.literalura.models.Libro;
+import com.je.literalura.models.LibrosData;
+import com.je.literalura.repository.AutorRepository;
+import com.je.literalura.repository.LibroRepository;
+import com.je.literalura.services.Converter;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @SpringBootApplication
-public class LiteraluraChallengeJeApplication {
+public class LiteraluraJeApplication implements CommandLineRunner{
+
 	@Autowired
 	private LibroRepository libroRepositorio;
 	@Autowired
 	private AutorRepository autorRepositorio;
-	@Autowired
 
 	private final Scanner scanner = new Scanner(System.in);
 	private final String url = "https://gutendex.com/books/";
@@ -38,7 +44,7 @@ public class LiteraluraChallengeJeApplication {
 	private List<Libro> libroList = new ArrayList<>();
 
 	public static void main(String[] args) {
-		SpringApplication.run(LiteraluraChallengeJeApplication.class, args);
+		SpringApplication.run(LiteraluraJeApplication.class, args);
 	}
 
 	public void showMenu() {
@@ -68,10 +74,10 @@ public class LiteraluraChallengeJeApplication {
                 scanner.nextLine();
                 switch (opcion){
                     case 1:
-                       obtenerDatosLibros();
+                    mostrarLibrosEnBaseDatos();
                        break;
                     case 2:
-                       mostrarLibrosEnBaseDatos();
+                       obtenerDatosLibros();
                        break;
                     case 3:
                        mostrarAutoresRegistrados();
@@ -82,7 +88,7 @@ public class LiteraluraChallengeJeApplication {
                     case 5:
                        buscarLibrosLenguaje();
                        break;
-                    case 0:
+                    case 6:
                        System.out.println("Cerrando aplicacion...");
                        break;
                     default:

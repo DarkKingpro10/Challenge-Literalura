@@ -1,7 +1,8 @@
-package models;
+package com.je.literalura.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,14 +20,19 @@ public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true)
     private String titulo;
-    @ManyToOne()
-    @JoinColumn( name = "autor_id", nullable = false)
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "autor_id", referencedColumnName = "id", nullable = false)
     private Autor autor;
+
     private List<String> temas;
+
     @Enumerated(EnumType.STRING)
     private Language lenguaje;
+
     private String derechos_autor;
     private String tipo_de_medio;
     private Long contador_descargas;

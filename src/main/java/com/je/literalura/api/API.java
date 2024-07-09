@@ -1,4 +1,4 @@
-package api;
+package com.je.literalura.api;
 
 import org.springframework.stereotype.Service;
 

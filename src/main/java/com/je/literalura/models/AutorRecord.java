@@ -1,4 +1,4 @@
-package models;
+package com.je.literalura.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

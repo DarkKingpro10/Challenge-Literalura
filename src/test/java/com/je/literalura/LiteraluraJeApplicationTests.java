@@ -1,10 +1,10 @@
-package com.base_data_jpa.web.app;
+package com.je.literalura;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LiteraluraChallengeJeApplicationTests {
+class LiteraluraJeApplicationTests {
 
 	@Test
 	void contextLoads() {

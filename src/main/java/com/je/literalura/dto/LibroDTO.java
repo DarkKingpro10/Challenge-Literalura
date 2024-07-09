@@ -1,6 +1,6 @@
-package dto;
+package com.je.literalura.dto;
 
-import models.Language;
+import com.je.literalura.models.Language;
 
 public record LibroDTO(
         String titulo,

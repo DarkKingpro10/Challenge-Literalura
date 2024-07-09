@@ -1,4 +1,4 @@
-package services;
+package com.je.literalura.services;
 
 import org.springframework.stereotype.Service;
 

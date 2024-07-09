@@ -1,4 +1,4 @@
-package models;
+package com.je.literalura.models;
 
 import java.util.List;
 

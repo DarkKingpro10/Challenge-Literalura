@@ -1,4 +1,4 @@
-package models;
+package com.je.literalura.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "autores")
 public class Autor {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private Integer ano_nacimiento;
-	private Integer ano_muerte;
-	@OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<Libro> libros = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
+
+    private Integer ano_nacimiento;
+    private Integer ano_muerte;
+
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Libro> libros = new ArrayList<>();
 
 	public Autor() {
 	}
